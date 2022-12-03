@@ -31,22 +31,31 @@ class _SFormSelectState extends State<SFormSelect> {
   Color? get _disableColor => row.rowConfig?.disableColor ?? SFormConfig.rowConfig.disableColor;
   TextStyle? get _placeholderStyle => row.rowConfig?.placeholderStyle ?? SFormConfig.rowConfig.placeholderStyle;
   String value = "";
+  String title = "";
 
   @override
   void initState() {
     super.initState();
     row.options?.forEach((element) {
       if(element.selected){
-        value = value.isEmpty? element.title : "$value,${element.title}";
+        title = title.isEmpty ? element.title : "$title,${element.title}";
+        value = value.isEmpty ? element.value.toString() : "$value,${element.value.toString()}";
       }
     });
     if (row.value.isNotEmpty){
+      row.options?.forEach((element) {element.selected = false;});
       value = row.value;
+      value.split(",").forEach((n) {
+        row.options?.forEach((element) {
+          if(n == element.value.toString()){
+            title = title.isEmpty ? element.title : "$title,${element.title}";
+          }
+        });
+      });
     }
-    _controller.text = value;
-    _controller.addListener(() {
-
-    });
+    row.value = value;
+    _controller.text = title;
+    _controller.addListener(() {});
   }
 
   @override

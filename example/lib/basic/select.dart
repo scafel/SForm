@@ -41,7 +41,6 @@ class SFormSelectPage extends StatelessWidget {
     );
   }
 
-
   List<SFormRow> rows = [
     SFormRow.Select(
       name: "singleSelectNormal",
@@ -64,6 +63,7 @@ class SFormSelectPage extends StatelessWidget {
     SFormRow.Select(
       name: "multipleSelectNormal",
       title: "常规多选框",
+      require: true,
       options: [
         SFormSelectOption(title: "name", value: 1 , selected: true),
         SFormSelectOption(title: "password", value: 2 , selected: true),

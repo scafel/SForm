@@ -1,3 +1,4 @@
+import 'package:example/basic/all.dart';
 import 'package:example/basic/checkbox.dart';
 import 'package:example/basic/date.dart';
 import 'package:example/basic/radio.dart';
@@ -116,6 +117,16 @@ class SFormPage extends StatelessWidget {
           const Divider(
             height: 0.5,
             thickness: 0.5,
+          ),
+          ListTile(
+            title: const Text("合集"),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SFormAll(),
+                ),
+              );
+            },
           ),
         ],
       ),

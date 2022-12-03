@@ -14,7 +14,7 @@ List formValidationErrors(List<SFormRow> rows){
         errors.add(row.requireMsg.isNotEmpty?row.requireMsg : "${row.title?.replaceAll("*", "")} 不能为空");
       }
     } else {
-      if (row.require && row.value.isEmpty) {
+      if (row.require == true && row.value.isEmpty) {
         errors.add(row.requireMsg.isNotEmpty?row.requireMsg : "${row.title?.replaceAll("*", "")} 不能为空");
       }
     }
