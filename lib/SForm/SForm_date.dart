@@ -247,16 +247,6 @@ class _SFormDateState extends State<SFormDate> {
   void initState() {
     super.initState();
     oldValue = row.value;
-    row.options?.forEach((element) {
-      if(element.selected){
-        row.value = row.value.isEmpty ? element.value.toString() : "${row.value},${element.value}" ;
-        value = value.isEmpty? element.title : "$value,${element.title}";
-      }
-    });
-    _controller.text = value;
-    _controller.addListener(() {
-
-    });
     DateTime nowDate = DateTime.now();
     _year = nowDate.year;
     _month = nowDate.month;
@@ -264,6 +254,7 @@ class _SFormDateState extends State<SFormDate> {
     years = getYears();
     months = getMonths(_year);
     days = getDays(_year , _month);
+    row.value = DateTime(_year , _month , _day).format(row.dateFormat);
   }
 
   @override
